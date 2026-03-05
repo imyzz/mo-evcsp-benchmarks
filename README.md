@@ -22,9 +22,7 @@
 
 This repository provides **70 synthetic daily charging scenarios** for electric vehicle fleets, covering 7 fleet sizes (10 to 400 EVs) with 10 independent daily replications each. All instances are derived from real charging transaction data collected in Jiaxing, China (Zhang et al., 2025) using a **hybrid non-parametric generation approach** (KDE + data-driven GMM).
 
-The instances are designed for benchmarking multi-objective EV charging scheduling algorithms under **Time-of-Use (TOU) electricity pricing**, with two objectives:
-- **Maximize** the number of satisfied EV charging demands
-- **Minimize** total electricity cost
+The instances are designed for benchmarking multi-objective EV charging scheduling algorithms.
 
 | Property | Value |
 |---|---|
