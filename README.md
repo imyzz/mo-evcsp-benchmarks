@@ -23,8 +23,8 @@ The instances are designed for benchmarking multi-objective EV charging scheduli
 
 ---
 
-## Instance format
-
+## File format
+### scenario_k.csv (evs_instances)
 Each CSV file `scenario_k.csv` (k = 1…70) describes **one daily charging scenario** for a fleet of n EVs.
 
 ```
@@ -44,8 +44,7 @@ index, arrival_time, departure_time, required_energy
 **Feasibility guarantee:** every session satisfies  
 `required_energy ≤ 22 kW × (departure_time − arrival_time)`
 
---
-## Scenario index
+#### Scenario index
 
 | Scenarios | Fleet size (n EVs) |
 |---|---|
@@ -57,7 +56,44 @@ index, arrival_time, departure_time, required_energy
 | scenario_51 … scenario_60 | 300 |
 | scenario_61 … scenario_70 | 400 |
 
----
+### cs_instance_k.csv (cs_instances)
+Each CSV file `cs_instances_k.csv` (k = 1…7) describes a **charging station configuration** and the grid capacity limit.
+
+```
+0,43
+11,1
+22,1
+43,1
+```
+First row :
+| Column | Unit | Description |
+|---|---|---|
+| 1st column | — | — |
+| `station_capacity_kw` | kW | Grid capacity limit (C_max) |
+
+Subsequent rows :
+| Column | Unit | Description |
+|---|---|---|
+| `station_power_kw` | kW | Station rated power (P_max) |
+| `number_of_station` | — | Number of stations with that rated power 
+
+### ep_instance_k.csv (ep_instances)
+Each CSV file `ep_instance_k.csv` (k = 1…5) describes the **electricity price profile** for the day, with 24 hourly values.
+
+```
+hour,price_eur_kwh
+0,   0.05
+1,   0.05
+2,   0.05
+...
+23,  0.05
+```
+
+| Column | Unit | Description |
+|---|---|---|
+| `hour` | — | Hour of the day (0-23) |
+| `price_eur_kwh` | €/kWh | Electricity price for that hour |
+
 
 ### Validation: real vs synthetic distributions
 
@@ -80,7 +116,6 @@ Box plots (10 replications per group) for six instance-level metrics across all 
 
 Session timeline for the 50-EV, Day 1 scenario. Each horizontal bar = one EV session; bar length = session duration; label = required energy (kWh). The yellow band marks the sharp TOU zone (19:00–21:00).
 
--
 
 ---
 

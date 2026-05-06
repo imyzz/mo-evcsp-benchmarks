@@ -1,5 +1,6 @@
-,ChargingPower
+-, station_capacity_kw
 0,43
+station_power_kw, number_of_station
 11,1
 22,1
 43,1
