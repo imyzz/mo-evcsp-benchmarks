@@ -4,20 +4,6 @@
 
 ---
 
-## Table of Contents
-
-1. [Overview](#overview)
-2. [Instance format](#instance-format)
-3. [Generation methodology](#generation-methodology)
-4. [Figures](#figures)
-5. [TOU pricing](#tou-pricing)
-6. [Scenario index](#scenario-index)
-7. [Reproducibility](#reproducibility)
-8. [References](#references)
-9. [Citation](#citation)
-
----
-
 ## Overview
 
 This repository provides **70 synthetic daily charging scenarios** for electric vehicle fleets, covering 7 fleet sizes (10 to 400 EVs) with 10 independent daily replications each. All instances are derived from real charging transaction data collected in Jiaxing, China (Zhang et al., 2025) using a **hybrid non-parametric generation approach** (KDE + data-driven GMM).
@@ -58,7 +44,18 @@ index, arrival_time, departure_time, required_energy
 **Feasibility guarantee:** every session satisfies  
 `required_energy ≤ 22 kW × (departure_time − arrival_time)`
 
----
+--
+## Scenario index
+
+| Scenarios | Fleet size (n EVs) |
+|---|---|
+| scenario_1 … scenario_10 | 10 |
+| scenario_11 … scenario_20 | 20 |
+| scenario_21 … scenario_30 | 50 |
+| scenario_31 … scenario_40 | 100 |
+| scenario_41 … scenario_50 | 200 |
+| scenario_51 … scenario_60 | 300 |
+| scenario_61 … scenario_70 | 400 |
 
 ---
 
@@ -72,20 +69,6 @@ Overlapping histograms and KDE curves for real data (blue) and synthetic session
 - A high p-value means the two samples cannot be statistically distinguished
 
 **After fixing P_max = 22 kW**, all three variables show good overlap and D < 0.15 for all three variables.
-
----
-
-### KDE/GMM ratio sensitivity
-
-![fig7](figures/fig7_kde_ratio_sensitivity.png)
-
-Mean KS statistic (5 replications) between real and synthetic distributions for KDE ratios ranging from 50% to 100%, for each of the three key variables.
-
-- Flat curves across the x-axis = generation quality is insensitive to the exact KDE/GMM ratio
-- The vertical dashed line marks the selected ratio (70%)
-- If a curve shows a clear minimum, that ratio minimises the distributional discrepancy for that variable
-
-**Purpose:** provides empirical justification for the 70/30 hyperparameter choice, showing it does not need to be tuned precisely.
 
 ---
 
@@ -104,17 +87,6 @@ Box plots (10 replications per group) for six instance-level metrics across all 
 | Bottom-centre | Total daily energy | Expected to scale linearly with n |
 | Bottom-right | Session overlap ratio | Proxy for scheduling complexity |
 
----
-
-### Inter-day variability
-
-![fig8](figures/fig8_variability.png)
-
-**What it shows:** (Left) Boxplots of total daily energy demand across 10 replications per fleet size. (Right) Normalised hourly arrival profiles averaged over 10 days for three fleet sizes.
-
-**How to read it:**
-- Narrow boxes on the left = low inter-day variability; the generator produces stable, reproducible instances
-- Arrival profiles on the right should all follow the same bimodal shape regardless of fleet size, confirming that generation behaviour is not distorted by fleet size scaling
 
 ---
 
@@ -122,24 +94,9 @@ Box plots (10 replications per group) for six instance-level metrics across all 
 
 ![fig9](figures/fig9_gantt_50EVs_day1.png)
 
- Session timeline for the 50-EV, Day 1 scenario. Each horizontal bar = one EV session; bar length = session duration; label = required energy (kWh). The yellow band marks the sharp TOU zone (19:00–21:00).
+Session timeline for the 50-EV, Day 1 scenario. Each horizontal bar = one EV session; bar length = session duration; label = required energy (kWh). The yellow band marks the sharp TOU zone (19:00–21:00).
 
-EVs whose sessions overlap the sharp TOU zone are the primary load-shifting targets for the scheduling algorithm. The diversity of arrival times, durations, and energy demands visible here reflects the multimodal distribution of the real dataset captured by the generator.
-
----
-## Scenario index
-
-| Scenarios | Fleet size (n EVs) |
-|---|---|
-| scenario_1 … scenario_10 | 10 |
-| scenario_11 … scenario_20 | 20 |
-| scenario_21 … scenario_30 | 50 |
-| scenario_31 … scenario_40 | 100 |
-| scenario_41 … scenario_50 | 200 |
-| scenario_51 … scenario_60 | 300 |
-| scenario_61 … scenario_70 | 400 |
-
----
+-
 
 ---
 
