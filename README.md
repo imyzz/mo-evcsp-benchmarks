@@ -63,13 +63,7 @@ index, arrival_time, departure_time, required_energy
 
 ![fig6](figures/fig6_validation_distributions.png)
 
-Overlapping histograms and KDE curves for real data (blue) and synthetic sessions pooled from the 100-EV scenario over 10 days (red). The KS statistic and p-value quantify distributional similarity.
-- Good visual overlap = the generator faithfully reproduces the source distribution
-- KS statistic D = maximum absolute difference between the two empirical CDFs; lower = more similar
-- A high p-value means the two samples cannot be statistically distinguished
-
-**After fixing P_max = 22 kW**, all three variables show good overlap and D < 0.15 for all three variables.
-
+Overlapping histograms and KDE curves for real data (blue) and synthetic sessions pooled from the 100-EV scenario over 10 days (red). 
 ---
 
 ### Descriptive statistics — Instances by fleet-size group
@@ -77,16 +71,6 @@ Overlapping histograms and KDE curves for real data (blue) and synthetic session
 ![fig_stats](figures/fig_descriptive_stats_by_group.png)
 
 Box plots (10 replications per group) for six instance-level metrics across all seven fleet sizes.
-
-| Subplot | Metric | What to look for |
-|---|---|---|
-| Top-left | Mean arrival time | Stable across fleet sizes → generation is size-invariant |
-| Top-centre | Mean session duration | Consistent temporal properties regardless of n |
-| Top-right | Mean energy per EV | Should match real data median (~17 kWh) |
-| Bottom-left | Within-scenario σ energy | Captures intra-day heterogeneity of demand |
-| Bottom-centre | Total daily energy | Expected to scale linearly with n |
-| Bottom-right | Session overlap ratio | Proxy for scheduling complexity |
-
 
 ---
 
