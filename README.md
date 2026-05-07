@@ -175,11 +175,9 @@ If you use these instances in your work, please cite:
 
 ```bibtex
 @inproceedings{zaidi2025mopervcsp,
-  author    = {Zaidi, Im\`{e}ne and others},
-  title     = {A Bi-objective Approach for Electric Vehicle Charging
-               Scheduling under Time-of-Use Pricing},
-  booktitle = {Proceedings of [Conference Name]},
-  year      = {2025}
+  author    = {Zaidi, Imene and others},
+  title     = {Bi-Objective Optimization of Electric Vehicle Charging Scheduling with Heterogeneous Chargers under Time-Varying Electricity Prices},
+  year      = {2026}
 }
 ```
 
